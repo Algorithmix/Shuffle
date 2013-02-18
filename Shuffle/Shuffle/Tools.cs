@@ -42,12 +42,13 @@ namespace Shuffle
         /// <returns></returns>
         public static string RandomizeName()
         {
-            char[] buffer = new char[Size];
+            /*char[] buffer = new char[Size];
             for(int ii=0; ii<Size; ii++)
             {
                 buffer[ii] = Alphabet[RandomNumber.Next(Alphabet.Length)];
             }
-            string randomSuffix = new string(buffer);
+            string randomSuffix = new string(buffer);*/
+            string randomSuffix = System.Guid.NewGuid().ToString();
             string newFilename = "image" + randomSuffix + ".png";
             return newFilename;
         }
