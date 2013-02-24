@@ -13,11 +13,12 @@ namespace Shuffle
     {
 
         private static readonly Random RandomNumber = new Random();
-        private const string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         private const int Size = 5;
 
         /// <summary>
-        /// 
+        /// Performs the Fisher-Yates shuffle on the pair of <filename,correct-order>.
+        /// This allows us to shuffle the order of files while preserving where they
+        /// should be to help with analyzing our correctness in the reconstruction.
         /// </summary>
         /// <param name="shreds"></param>
         /// <returns></returns>
@@ -37,17 +38,11 @@ namespace Shuffle
         }
 
         /// <summary>
-        /// Creates a shred filename with 5 randoms characters appended to the end
+        /// Creates a shred filename with a Globally Unique Identifier
         /// </summary>
         /// <returns></returns>
         public static string RandomizeName()
         {
-            /*char[] buffer = new char[Size];
-            for(int ii=0; ii<Size; ii++)
-            {
-                buffer[ii] = Alphabet[RandomNumber.Next(Alphabet.Length)];
-            }
-            string randomSuffix = new string(buffer);*/
             string randomSuffix = System.Guid.NewGuid().ToString();
             string newFilename = "image" + randomSuffix + ".png";
             return newFilename;
